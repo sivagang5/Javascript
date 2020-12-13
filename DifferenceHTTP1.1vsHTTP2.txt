@@ -1,0 +1,30 @@
+Difference between HTTP/1.1 and HTTP/2
+
+The Hypertext Transfer Protocol or HTTP is an application layer protocol, was invented in 1989 during the development of the World Wide Web. Version 1.1 of HTTP was released in 1997 and in 2015 version 2 was released which included several methods to decrease latency. Understanding the differences between these versions can greatly help developers in making informed decisions on web application performance.
+
+HTTP/1.1 is an application protocol that exchanges information between a client computer and a web server. A client sends a request to a server by calling a method like GET or POST. In response, the server sends a resource like an HTML page, in addition to any images, stylesheets, or other resources called for in the HTML.
+
+A new protocol called SPDY was developed at Google for reducing web page load latency using compression, multiplexing, and prioritization. The IETF working group used this protocol as a template to publish HTTP/2 standard in May 2015.
+
+The most significant feature that distinguishes HTTP/1.1 and HTTP/2 is the binary framing layer. HTTP/1.1 keeps all requests and responses in plain text format, HTTP/2 uses the binary framing layer to encapsulate all messages in binary format.
+
+HTTP/1.1 introduced persistent connections and pipelining. With persistent connections, HTTP/1.1 assumes that a TCP connection should be kept open unless directly told to close. This allows the client to send multiple requests along the same connection without waiting for a response, greatly improving the performance. There is a natural bottleneck to this optimization strategy. Since multiple data packets cannot pass each other when traveling to the same destination, in case a request at the head of the queue that cannot retrieve its required resource, it will block all the requests behind it. This is known as head-of-line (HOL) blocking.
+
+In HTTP/2, the binary framing layer encodes requests/responses and cuts them up into smaller packets of information, greatly increasing the flexibility of data transfer. Interleaved requests and responses can run in parallel without blocking the messages behind them, a process called multiplexing. Multiplexing resolves the head-of-line blocking issue by ensuring that no message has to wait for another to finish. 
+
+Multiple streams awaiting the same resource can still cause performance issues. Stream prioritization not only solves the possible issue but also allows developers to customize the relative weight of requests to better optimize application performance.When a client sends concurrent requests to a server, it can prioritize the responses it is requesting by assigning a weight between 1 and 256 to each stream. In addition to this, the client also states each stream’s dependency on another stream used to retrieve the data.
+
+HTTP/1.1, flow control relies on the underlying TCP connection. When this connection initiates, both client and server establish their buffer sizes.
+receiver sends available space that remains in its buffer sender will send data accordingly.
+
+HTTP/2 multiplexes streams of data within a single TCP connection. So the application layer communicates the available buffer space, allowing the client and server to set the receive window on the level of the multiplexed streams. In terms of flow control, HTTP/2 provides a more detailed level of control and greater optimization.
+
+In HTTP/1.1 a technique called resource inlining is used to include the required additional resources directly within the HTML document that the server sends in response to the initial GET request. 
+
+Since HTTP/2 enables multiple concurrent responses to a client’s initial GET request, a server can send a resource to a client along with the requested HTML page.
+
+HTTP/1.1 compresses the data sent in HTTP messages, especially to decrease the size of CSS and JavaScript files. The header component of a message, however, is always sent as plain text. This uncompressed data weighs heavier and heavier on the connection as more requests are made.
+
+HTTP/2 can split headers from their data, resulting in a header frame and a data frame. The HTTP/2-specific compression program HPACK can then compress this header frame. This algorithm can encode the header metadata using Huffman coding, thereby greatly decreasing its size.
+
+HTTP/2 differs from HTTP/1.1 in many ways, with some features providing greater levels of control to better optimize web application performance and other features improving upon the previous protocol. 
