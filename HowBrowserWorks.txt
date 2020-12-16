@@ -1,0 +1,11 @@
+How a web page is displayed on the browser.
+
+When a web address is entered in the browser, the browser checks the cache for a DNS record to find the corresponding IP address of the web address. DNS(Domain Name System) is a database that maintains the name of the website (URL) and the particular IP address it links to. The IP address belongs to the computer which hosts the server of the website we are requesting to access. To find the DNS record, the browser checks four caches - browser cache OS cache router cache ISP cache. If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server. The purpose of a DNS query is to search multiple DNS servers on the internet until it finds the correct IP address for the website.
+
+Once the browser receives the correct IP address, it will build a connection with the server using TCP, to transfer data packets between the client and the server.
+Connection is established using a three-step process:
+1. The client machine sends a SYN packet to the server over the internet, asking if it is open for new connections.
+2. If the server has open ports that can accept and initiate new connections, it’ll respond with an ACKnowledgment of the SYN packet using a SYN/ACK packet.
+3. The client will receive the SYN/ACK packet from the server and will acknowledge it by sending an ACK packet.
+
+Once the TCP connection is established, the browser will send a GET request asking for a web page. The server contains a webserver (i.e., Apache, IIS) that receives the request from the browser and passes it to a request handler to read and generate a response. The request handler is a program (written in ASP.NET, PHP, Ruby, etc.) that reads the request, its’ headers, and cookies to check what is being requested. Then it will assemble a response in a particular format (JSON, XML, HTML) and send it to the client. The client receives the response and displays the HTML content on the browser.
