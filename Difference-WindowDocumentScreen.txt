@@ -1,0 +1,17 @@
+
+Window:
+
+The window is the main  global object in a browser and is the root object of the JavaScript Object hierarchy and Document Object Model. The window object represents the browser window and is supported by all browsers. Each browser tab has its own global window object. All global JavaScript objects , functions, and variables automatically become members of the window object. The window object has many useful properties like window.innerHeight, window.innerWidth, window.location, window.history, window.screen, window.status, or the window.document. It also has methods like window.open(), window.close(), window.moveTo() and window.resizeTo().
+Since window is the global object, any of its properties can be referenced with just the property name
+
+Document:
+
+The document object is a property of window object which represents the HTML document loaded in the browser. The document is the main object of the Document Object Model. The Document Object Model is a tree structure of objects representing a part of the rendered document, where each element and its hierarchy is defined.
+The document object can be accessed with window.document or document keywords.
+
+Screen:
+
+The screen object is a property of window object which refers to the physical screen dimensions of user's display. Some properties of screen object are width, height, colorDepth, pixelDepth, availWidth, availHeight. etc. The screen object can be accessed with window.screen or screen keywords.
+
+
+
