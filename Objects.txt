@@ -1,0 +1,57 @@
+
+JavaScript is designed on a simple object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
+
+While these primitive data-types Number, String, Boolean, null, undefined and symbol all store a single value each, objects are more complex and each object may contain any combination of these primitive data-types as well as reference data-types. 
+
+The Object class represents one of JavaScript's data types. All objects in JavaScript are instances of Object and inherits properties (including methods) from Object.prototype.
+
+An object can be created with figure brackets {…} with an optional list of properties. A property is a “key: value” pair, where key is a string and value can be anything. Key is also called “property name”.
+
+An empty object can be created using one of following two syntaxes:
+let user = {}; 
+let user = new Object();
+
+Using figure brackets {} is preferred. This declaration is called an object literal. 'Key: value' pairs can be assigned to objects with the following syntax:
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+To access a property, we can use the dot notation: object.property or square brackets notation object["property"].
+
+alert( user.name ); // John
+alert( user[name] ); // John
+
+To remove a property, we can use delete operator.
+
+delete user.age; // John
+delete user[age]; // John
+
+If a particular property exists in the object or not can be checked using the in operator. For example in the above mentioned object, true or false is returned when a property is checked for existence, as given below:
+
+alert( "age" in user ); // returns true as user.age exists.
+alert( "address" in user ); // returns false as user.address doesn't exist.
+
+Objects can also have methods. A method is a function stored as a property.
+
+For example.
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+In this example, if one accesses the method using the syntax, person.fullName(), the full name of the person is displayed.
+
+To traverse all enumerable properties of an object, 'for..in' loops are used.
+
+For example, the following code returns all the values of the object:
+
+for (let key in user) {
+  alert( user[key] ); // John, Doe, John Doe
+}
+
+Objects in JavaScript are very powerful and have their special features. What we have discussed here is just the tip of the iceberg.
